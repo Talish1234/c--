@@ -32,7 +32,6 @@ class let{
     let& operator=(let a);
     let& operator=(initializer_list<let> a);
     let& operator=(vector<let> a);
-
     //addition operator
     let operator+(bool a);
     friend let operator+(bool a,const let b);
@@ -204,7 +203,9 @@ class let{
     bool operator!();
 
     let& operator[](let index) {
+        if(this->Type == 3)
         return Array[(int)index.Number];
+    return *this;
     }
     
     // vector function
@@ -233,61 +234,13 @@ class let{
     friend let toString(let a);
 
     // sort
+    let sort();
+    let reverse();
 
-    let sort2(){
-    int count = 0;
-    vector<double> Num;
-    vector<bool> Boolean;
-    vector<string> Str;
-    vector<let> Let;
-    int index = 0;
-    for(int i=0;i<this->Array.size();i++)
-    switch (this->Array[i].Type){
-    case 0:Boolean.push_back(this->Array[i].Bool);break;
-    case 1:Num.push_back(this->Array[i].Number);break;
-    case 2:Str.push_back(this->Array[i].String);break;
-    case 3:Let.push_back(1); Let[index++] = this->Array[i].Array;break;
-    default:count++;
-    }
-    let a = {};
-
-    if(count != 0){
-    for(int i=0;i<count;i++)
-    a.push({});
-    }
-
-    if(Boolean.size() != 0){
-    sort(Boolean.begin(),Boolean.end());
-    for(int i=0;i<Boolean.size();i++){
-    bool temp = Boolean[i];
-    a.push(temp);
-    }
-    }
-
-    if(Num.size() != 0){
-    sort(Num.begin(),Num.end());
-    for(int i=0;i<Num.size();i++){
-    int temp = Num[i];
-    a.push(temp);
-    }
-    }
+    //max min
+    friend let max(let a,let b);
+    friend let min(let a,let b);
+    friend void swap(let&a, let& b);
     
-    if(Str.size() != 0){
-    sort(Str.begin(),Str.end());
-    for(int i=0;i<Str.size();i++){
-    string& temp = Str[i];
-    a.push(temp);
-    }
-    }
-    if(Let.size() != 0){
-    sort(Let.begin(),Let.end());
-    for(int i=0;i<Let.size();i++){
-    let temp = Let[i].sort2();
-    a.push(temp);
-    }
-    }
-    this->Array = a.Array;
-    return *this;
-    }
     friend class Stream;
 };

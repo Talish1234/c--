@@ -31,6 +31,12 @@ using namespace std;
 #include ".//arrayfunction//addandremove.cpp"
 #include ".//arrayfunction//useful.cpp"
 #include ".//arrayfunction//accessing.cpp"
+#include ".//arrayfunction//sort.cpp"
+#include ".//arrayfunction//reverse.cpp"
+
+#include ".//algorithms//maxmin.cpp"
+#include ".//algorithms//swap.cpp"
+
 
 #include ".//converter//toNumber.cpp"
 #include ".//converter//toString.cpp"
